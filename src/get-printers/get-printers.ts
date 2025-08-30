@@ -14,7 +14,10 @@ async function getPrinters(): Promise<Printer[]> {
       .forEach((printer) => {
         const { isValid, printerData } = isValidPrinter(printer);
 
-        if (!isValid) return;
+        if (!isValid) {
+          console.log("Skipping invalid printer block");
+          return;
+        }
 
         printers.push(printerData);
       });

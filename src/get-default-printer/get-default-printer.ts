@@ -20,7 +20,10 @@ async function getDefaultPrinter(): Promise<Printer | null> {
     const { isValid, printerData } = isValidPrinter(printer);
 
     // DeviceID or Name not found
-    if (!isValid) return null;
+    if (!isValid) {
+      console.log("⚠️ Default printer is invalid, ignoring");
+      return null;
+    }
 
     return printerData;
   } catch (error) {
